@@ -3,7 +3,7 @@
 resources:
   pipelines:
     Databricks_Assessment_etl:
-      name: Databricks_Assessment_etl
+      name: Databricks_Assessment_etl_prd
       catalog: ${var.catalog}
       schema: ${var.schema}
       serverless: true

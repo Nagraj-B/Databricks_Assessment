@@ -26,7 +26,16 @@ targets:
       host: https://dbc-bda95dae-2975.cloud.databricks.com
     variables:
       catalog: databricks_dev
-      schema: dev
+      schema: Bronze
+  QA:
+    mode: production
+    workspace:
+      host: https://dbc-bda95dae-2975.cloud.databricks.com
+      # We explicitly deploy to /Workspace/Users/nagarajuboini94@gmail.com to make sure we only have a single copy.
+      root_path: /Workspace/Users/nagarajuboini94@gmail.com/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      catalog: databricks_QA
+      schema: Bronze    
   prod:
     mode: production
     workspace:
@@ -34,8 +43,8 @@ targets:
       # We explicitly deploy to /Workspace/Users/nagarajuboini94@gmail.com to make sure we only have a single copy.
       root_path: /Workspace/Users/nagarajuboini94@gmail.com/.bundle/${bundle.name}/${bundle.target}
     variables:
-      catalog: databricks_dev
-      schema: prod
+      catalog: databricks_prod
+      schema: Bronze
     permissions:
       - user_name: nagarajuboini94@gmail.com
         level: CAN_MANAGE
