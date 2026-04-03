@@ -2,7 +2,7 @@
 # See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
 bundle:
   name: Databricks_Assessment
-  uuid: aea2c35d-0fd0-483d-9ee4-2cac44197ded
+  uuid: f9b05a4a-1ec5-4d1e-a640-e6efa6955f75
 
 include:
   - resources/*.yml
@@ -26,16 +26,7 @@ targets:
       host: https://dbc-bda95dae-2975.cloud.databricks.com
     variables:
       catalog: databricks_dev
-      schema: bronze
-  QA:
-    mode: production
-    workspace:
-      host: https://dbc-bda95dae-2975.cloud.databricks.com
-      # We explicitly deploy to /Workspace/Users/nagarajuboini94@gmail.com to make sure we only have a single copy.
-      root_path: /Workspace/Users/nagarajuboini94@gmail.com/.bundle/${bundle.name}/${bundle.target}
-    variables:
-      catalog: databricks_QA
-      schema: bronze
+      schema: dev
   prod:
     mode: production
     workspace:
@@ -43,8 +34,8 @@ targets:
       # We explicitly deploy to /Workspace/Users/nagarajuboini94@gmail.com to make sure we only have a single copy.
       root_path: /Workspace/Users/nagarajuboini94@gmail.com/.bundle/${bundle.name}/${bundle.target}
     variables:
-      catalog: databricks_prod
-      schema: bronze  
+      catalog: databricks_dev
+      schema: prod
     permissions:
       - user_name: nagarajuboini94@gmail.com
         level: CAN_MANAGE
